@@ -33,9 +33,7 @@ public abstract class Bag {
         this.numberOfContents = 0;
         this.contents = new String[this.capacity];
     }
-
-
-
+    
 
     /*
      * TODO: Create a variety of 'getter' functions.
@@ -81,10 +79,6 @@ public abstract class Bag {
         return false;
     }
 
-
-
-
-
     /**
      * TODO: Create a method called popItem that returns a String.
      *       The string should be the last item added to this Bag
@@ -98,15 +92,12 @@ public abstract class Bag {
     public String popItem(){
         if (this.numberOfContents > 0){
             this.numberOfContents --;
-            String last = this.contents[this.numberOfContents];
+            String last = this.contents[this.numberOfContents - 1];
             this.contents[this.numberOfContents] = "";
             return last;
         }
         return null;
     }
-
-
-
 
 
     /**
@@ -121,7 +112,7 @@ public abstract class Bag {
         for (int i = 0; i < contents.length; i++){
             newContentsIndexed[i] = contents[i];
         }
-
+        this.contents = newContentsIndexed;
     }
 
     /**
