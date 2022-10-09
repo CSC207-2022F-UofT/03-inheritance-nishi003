@@ -1,39 +1,54 @@
-/**
- * This file defines an child class named HandBag.
- * We have provided most of the code for this class, however,
- * you should implement the provided TODOs.
+/* This file contains a few exercises and TODOs for you to fill.
+ * Make sure you do the TODOs in Bag.java, HandBag.java and CrossbodyBag.java
+ * as the tasks in this file depends on the completion on those!
  *
  * You may find the readings in chapter 3. Relationships between Classes
  * helpful while working through this exercise.
  */
-public class HandBag extends Bag{
-
+class BagMain {
     /**
-     * Creates a new HandBag with the given color and
-     * capacity.
+     * TODO: Implement this method
+     * Enhance each of the bags in bags. If double_enhance_handbags is
+     * True, then enhance any HandBags a second time.
      *
-     * @param color
-     * @param capacity
+     * This method should work for *all* Bags! We will test this method
+     * on new Bag types (and HandBag subclasses)!
      */
-    public HandBag(String color, int capacity) {
-        /**
-         * This is how we call the parent's constructor
-         * The Python equivalent is super().__init__(...)
-         */
-        super(color, capacity);
+    public static void enhanceBags(Bag[] bags, boolean double_enhance_handbags) {
+        if (double_enhance_handbags == true) {
+            for (Bag bag : bags) {
+                if (bag instanceof HandBag) {
+                    bag.enhance();
+                    bag.enhance();
+                }
+                else {
+                    bag.enhance();
+                }
+            }
+        }
+        else{
+            for (Bag bag : bags){
+                bag.enhance();
+            }
+        }
     }
 
     /**
-     * Increase the capacity of this bag by 1.
+     * TODO: Implement this method
+     * Return the total number of straps in CrossbodyBags in bags.
+     * Any bag that is not a CrossbodyBag should not be included
+     * in the count!
+     *
+     * @param bags An array of Bags
+     * @return The total number of straps of CrossbodyBags.
      */
-    @Override
-    public void enhance() {
-        /* TODO: Implement this method.
-         *       You may want to use the increaseCapacity() method that was
-         *       implemented in Bag.
-         *
-         * To call a method defined in a parent, you use super.method_name(...)
-         */
-        super.increaseCapacity(1);
+    public static int countCrossbodyStraps(Bag[] bags) {
+        int countStraps = 0;
+        for (Bag bag : bags){
+            if (bag instanceof CrossbodyBag){
+                countStraps = countStraps + ((CrossbodyBag)bag).getNumberOfStraps();
+            }
+        }
+        return countStraps;
     }
 }
