@@ -27,7 +27,7 @@ public abstract class Bag {
      * be empty (e.g. numberOfContents is 0 and an empty String array for
      * its contents.)
      */
-    public Bag(String color, int capacity){
+    public Bag(String color, int capacity) {
         this.color = color;
         this.capacity = capacity;
         this.numberOfContents = 0;
@@ -48,11 +48,13 @@ public abstract class Bag {
     public String getColor() {
         return this.color;
     }
+
     public int getNumberOfContents() {
         return this.numberOfContents;
     }
-    public String[] getCapacity() {
-        return this.contents;
+
+    public int getCapacity() {
+        return this.capacity;
     }
 
     /*
@@ -76,15 +78,12 @@ public abstract class Bag {
     public boolean addItem(String item) {
         if (this.numberOfContents < this.capacity) {
             this.contents[this.numberOfContents] = item;
-            this.numberOfContents ++;
+            this.numberOfContents++;
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
-
-
-
-
 
     /**
      * TODO: Create a method called popItem that returns a String.
@@ -92,23 +91,18 @@ public abstract class Bag {
      *       and the item should be removed from this Bag.
      *       Remember to modify numberOfContents accordingly.
      *
-     * If there are no items in this Bag, return null.
-     *
-     * @return
+     * @return If there are no items in this Bag, return null.
      */
-    public String popItem(){
+    public String popItem() {
         if (this.numberOfContents > 0) {
             String last = this.contents[this.numberOfContents - 1];
             this.contents[this.numberOfContents - 1] = null;
-            this.numberOfContents --;
+            this.numberOfContents--;
             return last;
         } else {
             return null;
         }
     }
-
-
-
 
 
     /**
@@ -120,9 +114,7 @@ public abstract class Bag {
         // TODO: Implement this method.
         this.capacity = this.capacity + n;
         String[] newContentsIndexed = new String[this.capacity];
-        for (int i = 0; i < this.contents.length; i++){
-            newContentsIndexed[i] = this.contents[i];
-        }
+        System.arraycopy(this.contents, 0, newContentsIndexed, 0, this.contents.length);
         this.contents = newContentsIndexed;
     }
 
@@ -131,7 +123,7 @@ public abstract class Bag {
      * This method requires you to have created the private
      * instance variables mentioned above.
      *
-     * @return
+     * @return the string
      */
     @Override
     public String toString() {

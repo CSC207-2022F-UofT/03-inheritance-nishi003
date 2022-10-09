@@ -15,23 +15,12 @@ public class HandBag extends Bag{
      * @param color
      * @param capacity
      */
-    public static void enhanceBags(Bag[] bags, boolean double_enhance_handbags) {
-        if (double_enhance_handbags == true) {
-            for (Bag bag : bags) {
-                if (bag instanceof HandBag) {
-                    bag.enhance();
-                    bag.enhance();
-                }
-                else {
-                    bag.enhance();
-                }
-            }
-        }
-        else{
-            for (Bag bag : bags){
-                bag.enhance();
-            }
-        }
+    public HandBag(String color, int capacity) {
+        /**
+         * This is how we call the parent's constructor
+         * The Python equivalent is super().__init__(...)
+         */
+        super(color, capacity);
     }
 
     /**
@@ -45,5 +34,6 @@ public class HandBag extends Bag{
          *
          * To call a method defined in a parent, you use super.method_name(...)
          */
+        super.increaseCapacity(1);
     }
 }
