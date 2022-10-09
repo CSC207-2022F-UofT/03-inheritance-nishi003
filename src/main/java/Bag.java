@@ -27,12 +27,14 @@ public abstract class Bag {
      * be empty (e.g. numberOfContents is 0 and an empty String array for
      * its contents.)
      */
-    public Bag(String col, int cap){
-        this.color = col;
-        this.capacity = cap;
+    public Bag(String color, int capacity){
+        this.color = color;
+        this.capacity = capacity;
         this.numberOfContents = 0;
-        this.contents = new String[cap];
+        this.contents = new String[capacity];
     }
+
+
 
 
     /*
@@ -57,8 +59,8 @@ public abstract class Bag {
      * TODO: Create a setter function called setColor which sets the
      *       color of this bag to the given color.
      */
-    public void setColor(String color1) {
-        this.color = color1;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     /*
@@ -72,14 +74,17 @@ public abstract class Bag {
      *       and false otherwise.
      */
     public boolean addItem(String item) {
-        if (this.numberOfContents < this.capacity){
+        if (this.numberOfContents < this.capacity) {
             this.contents[this.numberOfContents] = item;
             this.numberOfContents ++;
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
+
+
+
+
 
     /**
      * TODO: Create a method called popItem that returns a String.
@@ -101,6 +106,9 @@ public abstract class Bag {
             return null;
         }
     }
+
+
+
 
 
     /**
