@@ -51,8 +51,8 @@ public abstract class Bag {
     public int getNumberOfContents() {
         return numberOfContents;
     }
-    public int getCapacity() {
-        return capacity;
+    public String[] getContents() {
+        return contents;
     }
 
     /*
@@ -74,9 +74,9 @@ public abstract class Bag {
      *       and false otherwise.
      */
     public boolean addItem(String item) {
-        if (numberOfContents < capacity) {
+        if (numberOfContents < capacity){
             contents[numberOfContents] = item;
-            numberOfContents++;
+            numberOfContents ++;
             return true;
         }
         return false;
@@ -96,11 +96,14 @@ public abstract class Bag {
      *
      * @return
      */
-    public String popItem() {
-        numberOfContents--;
-        String last_item = contents[numberOfContents];
-        contents[numberOfContents] = "";
-        return last_item;
+    public String popItem(){
+        if (numberOfContents > 0){
+            numberOfContents --;
+            String last = contents[numberOfContents];
+            contents[numberOfContents] = "";
+            return last;
+        }
+        return null;
     }
 
 
@@ -114,12 +117,11 @@ public abstract class Bag {
      */
     public void increaseCapacity(int n) {
         // TODO: Implement this method.
-        capacity += n;
+        capacity = capacity + n;
         String[] newContentsIndexed = new String[capacity];
-        for (int i = 0; i < contents.length; i++) {
+        for (int i = 0; i < contents.length; i++){
             newContentsIndexed[i] = contents[i];
         }
-        contents = newContentsIndexed;
 
     }
 
